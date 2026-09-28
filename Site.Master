@@ -1,0 +1,82 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="vivektank1.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - Online Billing System</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/Content/Billing.css" rel="stylesheet" type="text/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+        <%-- ============================ HEADER ============================ --%>
+        <header class="site-header">
+            <div class="site-header-inner">
+                <a id="lnkHome" class="site-brand" runat="server" href="~/Index.aspx" title="Online Billing System - Home">
+                    <span class="site-brand-logo">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                            <rect x="5.5" y="2.5" width="13" height="19" rx="2.4" fill="#FFFFFF" />
+                            <rect x="8.4" y="6.6" width="7.2" height="1.6" rx="0.8" fill="#3D4EC2" />
+                            <rect x="8.4" y="10.3" width="7.2" height="1.6" rx="0.8" fill="#3D4EC2" />
+                            <rect x="8.4" y="14" width="4.6" height="1.6" rx="0.8" fill="#3D4EC2" />
+                        </svg>
+                    </span>
+                    <span class="site-brand-name">Online Billing System</span>
+                </a>
+
+                <div class="site-actions">
+                    <asp:HyperLink ID="lnkLogin" runat="server"
+                        NavigateUrl="~/Login.aspx"
+                        CssClass="hdr-btn hdr-btn-outline">Login</asp:HyperLink>
+                    <asp:HyperLink ID="lnkRegister" runat="server"
+                        NavigateUrl="~/Register.aspx"
+                        CssClass="hdr-btn hdr-btn-solid">Register</asp:HyperLink>
+                </div>
+            </div>
+        </header>
+
+        <%-- ======================= PAGE CONTENT ========================== --%>
+        <main class="site-main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </main>
+
+        <%-- ============================ FOOTER =========================== --%>
+        <footer class="site-footer">
+            <p>&copy; <%: DateTime.Now.Year %> Online Billing System. Crafted for B-Tech Capstone Project. All rights reserved.</p>
+        </footer>
+    </form>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/Scripts/bootstrap.js") %>
+    </asp:PlaceHolder>
+</body>
+</html>

@@ -14,6 +14,12 @@ namespace vivektank1
         {
             RegisterJQueryScriptManager();
 
+            // Site.Master uses <webopt:bundlereference path="~/Content/css" />.
+            // Without this bundle the control throws at runtime on every page.
+            bundles.Add(new StyleBundle("~/Content/css").Include(
+                            "~/Content/bootstrap.css",
+                            "~/Content/Site.css"));
+
             bundles.Add(new ScriptBundle("~/bundles/WebFormsJs").Include(
                             "~/Scripts/WebForms/WebForms.js",
                             "~/Scripts/WebForms/WebUIValidation.js",
@@ -35,6 +41,12 @@ namespace vivektank1
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                             "~/Scripts/modernizr-*"));
+
+            // Rendered by Site.Master as Scripts.Render("~/Scripts/bootstrap.js"):
+            // without this bundle the page would throw "bundle could not be found".
+            bundles.Add(new ScriptBundle("~/Scripts/bootstrap.js").Include(
+                            "~/Scripts/jquery-3.7.0.min.js",
+                            "~/Scripts/bootstrap.bundle.min.js"));
         }
 
         public static void RegisterJQueryScriptManager()

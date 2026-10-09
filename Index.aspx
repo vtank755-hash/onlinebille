@@ -1,4 +1,4 @@
-<%@ Page Title="Home" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="vivektank1.Index" %>
+f<%@ Page Title="Home" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="vivektank1.Index" %>
 
 <%-- Home page: STATIC ONLY.
      No database, no ADO.NET, no SQL Server, no CRUD, no authentication,
@@ -14,9 +14,22 @@
                 alt="Laptop showing an invoice dashboard next to printed bills" />
         </div>
 
-        <h1 class="hero-title" id="heroTitle">Manage Your Invoices &amp; Bills with Absolute Ease</h1>
+        <h1 class="hero-title" id="heroTitle">Manage Your<br class="hero-br" />
+            Invoices &amp; Bills<br class="hero-br" />
+            with Absolute Ease</h1>
 
         <p class="hero-subtitle">Describe bills, log payments, view summary charts, and track clients on our blazing fast college-grade Online Billing platform.</p>
+
+        <%-- Static links only - no authentication logic on this page. --%>
+        <div class="hero-actions">
+            <asp:HyperLink ID="lnkHeroLogin" runat="server"
+                NavigateUrl="~/Login.aspx"
+                CssClass="hero-btn hero-btn-solid">Login</asp:HyperLink>
+
+            <asp:HyperLink ID="lnkHeroRegister" runat="server"
+                NavigateUrl="~/Register.aspx"
+                CssClass="hero-btn hero-btn-outline">Register</asp:HyperLink>
+        </div>
 
     </section>
 

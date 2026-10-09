@@ -51,15 +51,8 @@
                     </span>
                     <span class="site-brand-name">Online Billing System</span>
                 </a>
-
-                <div class="site-actions">
-                    <asp:HyperLink ID="lnkLogin" runat="server"
-                        NavigateUrl="~/Login.aspx"
-                        CssClass="hdr-btn hdr-btn-outline">Login</asp:HyperLink>
-                    <asp:HyperLink ID="lnkRegister" runat="server"
-                        NavigateUrl="~/Register.aspx"
-                        CssClass="hdr-btn hdr-btn-solid">Register</asp:HyperLink>
-                </div>
+                <%-- Header buttons (Login / Register) removed per design request;
+                     Login and Register are reachable from the Index hero. --%>
             </div>
         </header>
 

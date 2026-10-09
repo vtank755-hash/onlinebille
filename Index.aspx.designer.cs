@@ -13,5 +13,14 @@ namespace vivektank1
 
     public partial class Index
     {
+        /// <summary>
+        /// lnkHeroLogin control.
+        /// </summary>
+        protected global::System.Web.UI.WebControls.HyperLink lnkHeroLogin;
+
+        /// <summary>
+        /// lnkHeroRegister control.
+        /// </summary>
+        protected global::System.Web.UI.WebControls.HyperLink lnkHeroRegister;
     }
 }

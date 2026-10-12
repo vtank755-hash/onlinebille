@@ -1,6 +1,5 @@
 using System;
 using System.Data;
-using System.Globalization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -58,14 +57,15 @@ namespace vivektank1
                 }
 
                 // Coming back from Add Customer: preselect the new customer
-                // and show his details in the Mobile / Address boxes.
+                // and immediately show his / her mobile number and address.
                 string preselect = Request.QueryString["cust"];
                 if (!string.IsNullOrEmpty(preselect)
                     && ddlCustomer.Items.FindByValue(preselect) != null)
                 {
                     ddlCustomer.SelectedValue = preselect;
-                    FillCustomerDetails(ddlCustomer.SelectedValue.Trim());
                 }
+
+                ShowCustomerDetails();
 
                 BindItems();
             }
@@ -130,9 +130,36 @@ namespace vivektank1
                     dt.Columns.Add("BillNo", typeof(string));
                     dt.Columns.Add("BillDate", typeof(string));
                     dt.Columns.Add("Customer", typeof(string));
+                    dt.Columns.Add("Mobile", typeof(string));
+                    dt.Columns.Add("Address", typeof(string));
                     dt.Columns.Add("Amount", typeof(decimal));
                     dt.Columns.Add("Status", typeof(string));
                     Session["SavedBills"] = dt;
+                }
+                return dt;
+            }
+        }
+
+        // --------------------------------------------------------------------
+        // Item rows of the saved bills (Session["BillItems"]): every invoice
+        // stores its items so BillDetails.aspx can show the full bill.
+        // Database phase: replaced by INSERT INTO BillItems ... and
+        //   SELECT * FROM BillItems WHERE BillNo = @BillNo
+        // --------------------------------------------------------------------
+        private DataTable SavedBillItems
+        {
+            get
+            {
+                DataTable dt = Session["BillItems"] as DataTable;
+                if (dt == null)
+                {
+                    dt = new DataTable("BillItems");
+                    dt.Columns.Add("BillNo", typeof(string));
+                    dt.Columns.Add("ItemName", typeof(string));
+                    dt.Columns.Add("Qty", typeof(int));
+                    dt.Columns.Add("Rate", typeof(decimal));
+                    dt.Columns.Add("Amount", typeof(decimal));
+                    Session["BillItems"] = dt;
                 }
                 return dt;
             }
@@ -168,13 +195,17 @@ namespace vivektank1
             }
             bill["BillNo"] = billNo;
 
-            // Date picked from the calendar / typed by the user, otherwise
-            // today - always stored as DD-MMM-YYYY (design format).
-            bill["BillDate"] = NormalizeBillDate(txtBillDate.Text.Trim());
+            // Date typed by the user, otherwise today (dd-MMM-yyyy like design).
+            string date = txtBillDate.Text.Trim();
+            bill["BillDate"] = (date.Length == 0) ? DateTime.Now.ToString("dd-MMM-yyyy") : date;
 
             bill["Customer"] = (ddlCustomer.SelectedValue.Trim().Length == 0)
                 ? "Walk-in Customer"
                 : ddlCustomer.SelectedValue;
+
+            // Customer details shown by Bill Details.
+            bill["Mobile"] = txtMobile.Text.Trim();
+            bill["Address"] = txtAddress.Text.Trim();
 
             bill["Amount"] = GetGrandTotal();
 
@@ -183,6 +214,25 @@ namespace vivektank1
             bill["Status"] = (ddlPaymentMode.SelectedValue == "Cash") ? "Cash" : "Pending";
 
             SavedBills.Rows.Add(bill);
+
+            // Items of this bill are stored too, so BillDetails.aspx can
+            // print the full invoice (name, quantity, rate, amount).
+            foreach (DataRow item in BillRows.Rows)
+            {
+                DataRow ir = SavedBillItems.NewRow();
+                ir["BillNo"] = billNo;
+
+                string itemName = Convert.ToString(item["ItemName"]).Trim();
+                ir["ItemName"] = (itemName.Length == 0) ? "Item" : itemName;
+
+                int qty = Convert.ToInt32(item["Qty"]);
+                decimal rate = Convert.ToDecimal(item["Rate"]);
+
+                ir["Qty"] = qty;
+                ir["Rate"] = rate;
+                ir["Amount"] = qty * rate;
+                SavedBillItems.Rows.Add(ir);
+            }
         }
 
         /// <summary>
@@ -264,53 +314,42 @@ namespace vivektank1
         // --------------------------------------------------------------------
         // Buttons
         // --------------------------------------------------------------------
-        protected void btnAddCustomer_Click(object sender, EventArgs e)
-        {
-            // The "+" button opens the Add Customer page (design flow);
-            // the new customer comes back selected in the dropdown.
-            Response.Redirect("~/AddCustomer.aspx");
-        }
-
         /// <summary>
-        /// A customer was selected in the dropdown: show his details
-        /// (Mobile Number + Billing Address) in the two text boxes.
+        /// Customer dropdown changed (AutoPostBack): show the details of the
+        /// selected customer in the Mobile Number and Address boxes.
         /// </summary>
         protected void ddlCustomer_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FillCustomerDetails(ddlCustomer.SelectedValue.Trim());
+            CaptureInputs();   // keep the typed item rows before the round trip
+            ShowCustomerDetails();
         }
 
         /// <summary>
-        /// Fills Mobile Number and Address for the selected customer:
-        ///   1) customers saved on AddCustomer.aspx (Session["Customers"]),
-        ///   2) the sample customers of the design.
-        /// Nothing selected -> both boxes are cleared.
-        /// Database phase: SELECT Mobile, Address FROM Customers WHERE Name=@Name
+        /// Fills Mobile Number and Address of the selected customer:
+        /// saved customers come from Session["Customers"], the five design
+        /// customers use their sample details.
+        /// Database phase: SELECT Mobile, Address FROM Customers WHERE Name = @Name
         /// </summary>
-        private void FillCustomerDetails(string customerName)
+        private void ShowCustomerDetails()
         {
-            if (customerName.Length == 0)
+            string name = ddlCustomer.SelectedValue.Trim();
+
+            // "-- Select Customer --" -> clear both boxes.
+            if (name.Length == 0)
             {
                 txtMobile.Text = "";
                 txtAddress.Text = "";
-                txtBillDate.Text = "";
                 return;
             }
 
-            // Bill date of the customer is fetched INTO the Bill Date field
-            // together with Mobile / Address. The date field is a native
-            // date input, so DD-MMM-YYYY -> YYYY-MM-DD (no bill -> empty,
-            // and an empty date falls back to today when saving).
-            txtBillDate.Text = ToDateInput(LastBillDate(customerName));
-
-            // 1) customers saved on Add Customer (Session state)
+            // Customers saved on AddCustomer.aspx (state management).
             DataTable saved = Session["Customers"] as DataTable;
             if (saved != null)
             {
                 foreach (DataRow row in saved.Rows)
                 {
-                    if (string.Equals(Convert.ToString(row["Name"]), customerName,
-                                       StringComparison.OrdinalIgnoreCase))
+                    if (string.Equals(Convert.ToString(row["Name"]), name,
+                                      StringComparison.OrdinalIgnoreCase))
                     {
                         txtMobile.Text = Convert.ToString(row["Mobile"]);
                         txtAddress.Text = Convert.ToString(row["Address"]);
@@ -319,28 +358,28 @@ namespace vivektank1
                 }
             }
 
-            // 2) sample customers of the Figma design
-            switch (customerName)
+            // Sample details of the five customers of the design.
+            switch (name)
             {
                 case "Rahul Patel":
                     txtMobile.Text = "9876543210";
-                    txtAddress.Text = "24, MG Road, Indore";
+                    txtAddress.Text = "21 Nehru Nagar, Indore, Madhya Pradesh";
                     break;
                 case "Anjali Gupta":
                     txtMobile.Text = "9825012345";
-                    txtAddress.Text = "7, Lake View, Bhopal";
+                    txtAddress.Text = "7 Silver Heights, Bhopal, Madhya Pradesh";
                     break;
                 case "Amit Yadav":
-                    txtMobile.Text = "9765432109";
-                    txtAddress.Text = "15, Station Road, Jabalpur";
+                    txtMobile.Text = "9701122334";
+                    txtAddress.Text = "44 Shanti Villa, Jabalpur, Madhya Pradesh";
                     break;
                 case "Raj Mehta":
-                    txtMobile.Text = "9911223344";
-                    txtAddress.Text = "3, Nehru Nagar, Ujjain";
+                    txtMobile.Text = "9967801234";
+                    txtAddress.Text = "12 Gandhi Chowk, Ujjain, Madhya Pradesh";
                     break;
                 case "Pooja Sharma":
-                    txtMobile.Text = "9798765432";
-                    txtAddress.Text = "88, Vijay Nagar, Gwalior";
+                    txtMobile.Text = "9123456780";
+                    txtAddress.Text = "30 Lake View Colony, Bhopal, Madhya Pradesh";
                     break;
                 default:
                     txtMobile.Text = "";
@@ -349,85 +388,11 @@ namespace vivektank1
             }
         }
 
-        /// <summary>
-        /// Bill date of the selected customer (fetched into the Bill Date
-        /// field):
-        ///   1) bills saved in this session (newest first),
-        ///   2) the sample bill date of the design customers,
-        ///   3) empty when the customer does not have a bill yet.
-        /// Database phase: SELECT MAX(BillDate) FROM Bills WHERE Customer=@name
-        /// </summary>
-        private string LastBillDate(string customerName)
+        protected void btnAddCustomer_Click(object sender, EventArgs e)
         {
-            DataTable bills = Session["SavedBills"] as DataTable;
-            if (bills != null)
-            {
-                // Newest bill first (rows are appended on save).
-                for (int i = bills.Rows.Count - 1; i >= 0; i--)
-                {
-                    if (string.Equals(Convert.ToString(bills.Rows[i]["Customer"]),
-                                       customerName,
-                                       StringComparison.OrdinalIgnoreCase))
-                    {
-                        return Convert.ToString(bills.Rows[i]["BillDate"]);
-                    }
-                }
-            }
-
-            switch (customerName)
-            {
-                case "Rahul Patel":   return "16-May-2026";
-                case "Anjali Gupta":  return "14-May-2026";
-                case "Amit Yadav":    return "12-May-2026";
-                case "Raj Mehta":     return "10-May-2026";
-                case "Pooja Sharma":  return "09-May-2026";
-            }
-            return "";          // the customer does not have a bill yet
-        }
-
-        /// <summary>
-        /// Converts the stored DD-MMM-YYYY date ("16-May-2026") to the
-        /// YYYY-MM-DD value ("2026-05-16") that the native date field
-        /// (TextMode="Date") understands. Empty input or an unknown
-        /// format -> empty string.
-        /// </summary>
-        private string ToDateInput(string date)
-        {
-            DateTime parsed;
-            if (DateTime.TryParseExact(date, "dd-MMM-yyyy",
-                    CultureInfo.InvariantCulture, DateTimeStyles.None,
-                    out parsed))
-            {
-                return parsed.ToString("yyyy-MM-dd",
-                                       CultureInfo.InvariantCulture);
-            }
-            return "";
-        }
-
-        /// <summary>
-        /// The bill date is stored as DD-MMM-YYYY (like the design rows):
-        /// the native date picker posts YYYY-MM-DD, typing DD-MM-YYYY also
-        /// works, empty -> today. Anything else is kept as typed.
-        /// </summary>
-        private string NormalizeBillDate(string date)
-        {
-            if (date.Length == 0)
-            {
-                return DateTime.Now.ToString("dd-MMM-yyyy",
-                                              CultureInfo.InvariantCulture);
-            }
-
-            string[] formats = { "yyyy-MM-dd", "dd-MM-yyyy", "d-M-yyyy",
-                                 "dd/MM/yyyy", "d/M/yyyy", "dd-MMM-yyyy" };
-            DateTime parsed;
-            if (DateTime.TryParseExact(date, formats,
-                    CultureInfo.InvariantCulture,
-                    DateTimeStyles.None, out parsed))
-            {
-                return parsed.ToString("dd-MMM-yyyy",
-                                        CultureInfo.InvariantCulture);
-            }
-            return date;
+            // The "+" button opens the Add Customer page (design flow);
+            // the new customer comes back selected in the dropdown.
+            Response.Redirect("~/AddCustomer.aspx");
         }
 
         protected void btnAddItem_Click(object sender, EventArgs e)

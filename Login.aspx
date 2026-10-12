@@ -86,7 +86,7 @@
                 <asp:CheckBox ID="chkRemember" runat="server"
                     Text="Remember Me"
                     CssClass="remember-check" />
-                <a class="auth-link" href="#" title="Password recovery is not part of this project scope">Forgot Password?</a>
+                <a class="auth-link" href="ForgotPassword.aspx" title="Forgot Password">Forgot Password?</a>
             </div>
 
             <asp:Button ID="btnLogin" runat="server"

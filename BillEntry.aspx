@@ -21,12 +21,10 @@
                     Text="Customer Name"></asp:Label>
 
                 <div class="customer-pick">
-                    <%-- Selecting a customer posts back and fills Mobile +
-                         Address with that customer's details. --%>
                     <asp:DropDownList ID="ddlCustomer" runat="server"
                         CssClass="form-control form-select"
                         AutoPostBack="true"
-                        OnTextChanged="ddlCustomer_SelectedIndexChanged">
+                        OnSelectedIndexChanged="ddlCustomer_SelectedIndexChanged">
                         <asp:ListItem Value="" Text="-- Select Customer --" />
                         <asp:ListItem Value="Rahul Patel" Text="Rahul Patel" />
                         <asp:ListItem Value="Anjali Gupta" Text="Anjali Gupta" />
@@ -70,10 +68,6 @@
             </div>
 
             <%-- ---------------------------- BILL DATE -------------------------- --%>
-            <%-- Native HTML5 date picker: clicking the field opens the
-                 browser calendar (DD/MM/YYYY in Indian locales). The value
-                 posts back as YYYY-MM-DD and is stored as DD-MMM-YYYY by
-                 NormalizeBillDate in the code-behind. --%>
             <div class="form-group">
                 <asp:Label ID="lblBillDate" runat="server"
                     AssociatedControlID="txtBillDate"
@@ -82,7 +76,7 @@
 
                 <asp:TextBox ID="txtBillDate" runat="server"
                     CssClass="form-control"
-                    TextMode="Date"></asp:TextBox>
+                    Placeholder="Select bill date (DD-MM-YYYY)"></asp:TextBox>
             </div>
 
             <%-- --------------------------- BILL NUMBER ------------------------- --%>

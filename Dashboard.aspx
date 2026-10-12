@@ -105,9 +105,9 @@
                             <td class="num">&#8377; <%# Eval("AmountText") %></td>
                             <td><span class="badge <%# Eval("BadgeCss") %>"><%# Eval("Status") %></span></td>
                             <td class="act">
-                                <a class="btn-view" href="ViewBills.aspx">
+                                <a class="btn-view" href='BillDetails.aspx?bill=<%# Eval("BillNo") %>'>
                                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2.5 12S6 5.8 12 5.8 21.5 12 21.5 12 18 18.2 12 18.2 2.5 12 2.5 12z" /><circle cx="12" cy="12" r="3" /></svg>View</a>
-                                <a class="btn-edit" href="BillEntry.aspx" title="Edit bill">
+                                <a class="btn-edit" href="BillEntryEdit.aspx" title="Edit bill">
                                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 20h4l11-11-4-4L4 16z" /><path d="M13.8 5.4l4.8 4.8" /></svg></a>
                             </td>
                         </tr>

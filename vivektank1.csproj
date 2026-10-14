@@ -106,10 +106,22 @@
     <Content Include="AddCustomer.aspx" />
     <Content Include="ForgotPassword.aspx" />
     <Content Include="NewPassword.aspx" />
+    <Content Include="Profile.aspx" />
+    <Content Include="EditProfile.aspx" />
+    <Content Include="Admin\Admin.Master" />
     <Content Include="Dashboard.Master" />
     <Content Include="BillEntry.aspx" />
     <Content Include="BillDetails.aspx" />
     <Content Include="ViewBills.aspx" />
+    <Content Include="AdminDashboard.aspx" />
+    <Content Include="Admin\AdminLogin.aspx" />
+    <Content Include="Admin\AdminDashboard.aspx" />
+    <Content Include="Admin\AdminActiveUsers.aspx" />
+    <Content Include="Admin\AdminInactiveUsers.aspx" />
+    <Content Include="Admin\AdminAllUsers.aspx" />
+    <Content Include="Admin\AdminNewUsers.aspx" />
+    <Content Include="Admin\AdminUserProfile.aspx" />
+    <Content Include="Admin\AdminEditUser.aspx" />
     <Content Include="BillEntryEdit.aspx" />
     <Content Include="About.aspx" />
     <Content Include="Contact.aspx" />
@@ -206,6 +218,69 @@
     <Compile Include="Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AdminDashboard.aspx.cs">
+      <DependentUpon>AdminDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminDashboard.aspx.designer.cs">
+      <DependentUpon>AdminDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminLogin.aspx.cs">
+      <DependentUpon>AdminLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminLogin.aspx.designer.cs">
+      <DependentUpon>AdminLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminDashboard.aspx.cs">
+      <DependentUpon>AdminDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminDashboard.aspx.designer.cs">
+      <DependentUpon>AdminDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminActiveUsers.aspx.cs">
+      <DependentUpon>AdminActiveUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminActiveUsers.aspx.designer.cs">
+      <DependentUpon>AdminActiveUsers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminInactiveUsers.aspx.cs">
+      <DependentUpon>AdminInactiveUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminInactiveUsers.aspx.designer.cs">
+      <DependentUpon>AdminInactiveUsers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminAllUsers.aspx.cs">
+      <DependentUpon>AdminAllUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminAllUsers.aspx.designer.cs">
+      <DependentUpon>AdminAllUsers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminNewUsers.aspx.cs">
+      <DependentUpon>AdminNewUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminNewUsers.aspx.designer.cs">
+      <DependentUpon>AdminNewUsers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminUserProfile.aspx.cs">
+      <DependentUpon>AdminUserProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminUserProfile.aspx.designer.cs">
+      <DependentUpon>AdminUserProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminEditUser.aspx.cs">
+      <DependentUpon>AdminEditUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminEditUser.aspx.designer.cs">
+      <DependentUpon>AdminEditUser.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AddCustomer.aspx.cs">
       <DependentUpon>AddCustomer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -283,6 +358,20 @@
     <Compile Include="NewPassword.aspx.designer.cs">
       <DependentUpon>NewPassword.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditProfile.aspx.cs">
+      <DependentUpon>EditProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditProfile.aspx.designer.cs">
+      <DependentUpon>EditProfile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -309,6 +398,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Admin\Admin.Master.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Admin.Master.designer.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

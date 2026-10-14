@@ -98,6 +98,9 @@
             <p class="auth-alt">Register Here
                 <a class="auth-link-strong" href="Register.aspx">Register Here</a></p>
 
+            <p class="auth-alt auth-admin-link">Admin Login
+                <a class="auth-link-strong" href="Admin/AdminLogin.aspx">Admin Login</a></p>
+
         </div>
 
     </div>

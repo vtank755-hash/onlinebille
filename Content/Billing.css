@@ -425,6 +425,52 @@ body > form {
     text-decoration: underline;
 }
 
+.auth-admin-link {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(194, 24, 91, 0.15);
+}
+
+.auth-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(194, 24, 91, 0.15);
+    font-size: 14px;
+    color: #64748B;
+}
+
+.auth-separator {
+    color: #CBD5E1;
+}
+
+.auth-links .auth-link {
+    color: #C2185B;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-links .auth-link:hover,
+.auth-links .auth-link:focus {
+    text-decoration: underline;
+}
+
+.auth-error {
+    display: block;
+    margin-top: 16px;
+    padding: 12px 16px;
+    background-color: #FEF2F2;
+    border: 1px solid #FECACA;
+    border-radius: 8px;
+    color: #DC2626;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+}
+
 .auth-alt-left {
     margin: 12px 0 0;
     text-align: left;
@@ -1786,6 +1832,197 @@ body > form {
     }
 }
 
+/* -------------------------------- profile ------------------------------ */
+/* Profile.aspx / profile.html - "Profile Settings" + "Personal
+   Information" cards of the design (same class names in both).           */
+.pf-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+.pf-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: #1E2A5E;
+}
+
+.pf-sub {
+    font-size: 14.5px;
+    color: #64748B;
+    margin-top: 6px;
+}
+
+.pf-save {
+    background-color: #C2185B;
+    color: #FFFFFF;
+    border: 0;
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.pf-save:hover {
+    background-color: #A9154E;
+}
+
+.pf-card {
+    background-color: #FFFFFF;
+    border-radius: 14px;
+    padding: 24px 26px;
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.05);
+    margin-bottom: 18px;
+}
+
+.pf-photo-row {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.pf-photo {
+    width: 92px;
+    height: 92px;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #EEF2FF;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pf-photo svg {
+    width: 92px;
+    height: 92px;
+}
+
+.pf-name {
+    font-size: 20px;
+    font-weight: 800;
+    color: #1E2A5E;
+}
+
+.pf-role {
+    font-size: 13px;
+    color: #94A3B8;
+    margin-top: 4px;
+}
+
+.pf-photo-btns {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 12px;
+}
+
+.pf-btn-photo {
+    background-color: #E2E8F0;
+    color: #334155;
+    border: 0;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.pf-btn-photo:hover {
+    background-color: #CBD5E1;
+}
+
+.pf-remove {
+    background: none;
+    border: 0;
+    padding: 0;
+    color: #DC2626;
+    font-size: 14.5px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.pf-remove:hover {
+    text-decoration: underline;
+}
+
+.pf-info-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #1E2A5E;
+}
+
+.pf-rule {
+    border: 0;
+    height: 1px;
+    background-color: #E2E8F0;
+    margin: 16px 0 20px;
+}
+
+.pf-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 18px;
+    max-width: 420px;
+}
+
+.pf-field:last-child {
+    margin-bottom: 0;
+}
+
+/* read only rows of the Profile page (label above value) */
+.pf-info-row {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 18px;
+    max-width: 420px;
+}
+
+.pf-info-row:last-child {
+    margin-bottom: 0;
+}
+
+.pf-info-label {
+    font-size: 13px;
+    color: #64748B;
+}
+
+.pf-info-value {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1E2A5E;
+}
+
+/* "Edit Profile" link styled like the Save Changes button */
+.pf-edit-link {
+    display: inline-block;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+    .pf-head {
+        flex-direction: column;
+    }
+
+    .pf-save {
+        width: 100%;
+    }
+
+    .pf-field {
+        max-width: none;
+    }
+
+    .pf-photo-row {
+        flex-wrap: wrap;
+    }
+}
+
 /* bill details - small screens */
 @media screen and (max-width: 768px) {
     .inv-card {
@@ -1808,5 +2045,1252 @@ body > form {
     .inv-table {
         display: block;
         overflow-x: auto;
+    }
+}
+
+/* ==========================================================================
+   ADMIN PANEL STYLES
+   ========================================================================== */
+
+:root {
+    --admin-accent: #C2185B;        /* magenta accent for admin */
+    --admin-accent-dark: #A9154E;
+    --admin-accent-light: #FCE4EC;
+}
+
+.admin-body {
+    background-color: #FDF2F8;
+    color: #1E2A5E;
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.admin-body > form {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.admin-header {
+    background-color: #FFFFFF;
+    border-bottom: 2px solid var(--admin-accent);
+    flex: 0 0 auto;
+}
+
+.admin-header-inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    height: 72px;
+    padding: 0 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.admin-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: var(--admin-accent);
+}
+
+.admin-brand-logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    background-color: var(--admin-accent);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+}
+
+.admin-brand-logo svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+.admin-brand-name {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    color: var(--admin-accent);
+    white-space: nowrap;
+}
+
+.admin-main {
+    flex: 1 0 auto;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 120px;
+    box-sizing: border-box;
+}
+
+.admin-footer {
+    flex: 0 0 auto;
+    background-color: #FFFFFF;
+    border-top: 1px solid rgba(194, 24, 91, 0.15);
+    color: var(--admin-accent);
+    text-align: center;
+    padding: 22px 16px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.admin-footer p {
+    margin: 0;
+}
+
+/* Admin Auth Card */
+.auth-card-admin {
+    background-color: #FFFFFF;
+    border-radius: 16px;
+    padding: 40px 48px;
+    box-shadow: 0 20px 50px rgba(194, 24, 91, 0.12);
+    max-width: 440px;
+    margin: 0 auto;
+    border: 1px solid rgba(194, 24, 91, 0.08);
+}
+
+.auth-admin-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    background-color: var(--admin-accent-light);
+    border-radius: 50px;
+    margin-bottom: 24px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.admin-badge-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-badge-text {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--admin-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Admin Buttons */
+.btn-admin {
+    background-color: var(--admin-accent) !important;
+    border-color: var(--admin-accent) !important;
+    color: #FFFFFF !important;
+}
+
+.btn-admin:hover,
+.btn-admin:focus {
+    background-color: var(--admin-accent-dark) !important;
+    border-color: var(--admin-accent-dark) !important;
+    color: #FFFFFF !important;
+}
+
+/* Admin Link */
+.auth-admin-link {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(194, 24, 91, 0.15);
+}
+
+/* Admin Toast/Message */
+.admin-toast {
+    background-color: var(--admin-accent-light);
+    border-left: 4px solid var(--admin-accent);
+}
+
+/* Admin Stat Cards - colours and sizes are defined in the
+   "ADMIN DASHBOARD SHELL" section at the end of this file. */
+
+/* Admin Badge */
+.badge-admin {
+    background-color: var(--admin-accent-light);
+    color: var(--admin-accent);
+    border: 1px solid rgba(194, 24, 91, 0.2);
+}
+
+/* Admin Table - neutral colours are defined in the
+   "ADMIN DASHBOARD SHELL" section at the end of this file. */
+
+/* Admin Sidebar navigation - styles are defined in the
+   "ADMIN DASHBOARD SHELL" section at the end of this file. */
+
+/* Responsive Admin */
+@media screen and (max-width: 768px) {
+    .auth-card-admin {
+        padding: 32px 24px;
+        margin: 16px;
+    }
+
+    .admin-main {
+        padding: 0 24px;
+    }
+
+    .admin-header-inner {
+        padding: 0 24px;
+    }
+}
+
+/* ==========================================================================
+   ADMIN DASHBOARD SHELL
+   Sidebar + top bar layout used by Admin.Master, the stat cards,
+   the user list table and the pagination bar.
+   ========================================================================== */
+
+:root {
+    --admin-side-bg: #242F7A;          /* dark indigo sidebar */
+    --admin-blue: #2563EB;             /* dashboard accent */
+    --admin-blue-dark: #1D4ED8;
+    --admin-page-bg: #F8FAFC;
+    --admin-ink: #1E293B;
+    --admin-muted: #64748B;
+    --admin-line: #EEF2F7;
+}
+
+/* ---------- Layout ---------- */
+.admin-layout {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    min-height: 0;
+}
+
+.admin-layout-plain {
+    background-color: transparent;
+}
+
+.admin-layout-sidebar {
+    margin-left: 264px;
+    background-color: var(--admin-page-bg);
+}
+
+.admin-page {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    min-width: 0;
+}
+
+.admin-layout-sidebar .admin-main {
+    flex: 1 0 auto;
+    max-width: none;
+    margin: 0;
+    padding: 30px 36px 44px;
+    box-sizing: border-box;
+}
+
+.admin-layout-sidebar .admin-footer {
+    background-color: #FFFFFF;
+    border-top: 1px solid var(--admin-line);
+    color: var(--admin-muted);
+}
+
+/* ---------- Sidebar ---------- */
+.admin-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 264px;
+    z-index: 30;
+    box-sizing: border-box;
+    background-color: var(--admin-side-bg);
+    padding: 26px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    overflow-y: auto;
+}
+
+.admin-side-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 6px;
+}
+
+.admin-side-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #DBEAFE;
+    color: var(--admin-blue);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+}
+
+.admin-side-avatar svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+    display: block;
+}
+
+.admin-side-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.admin-side-name {
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.admin-side-role {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12.5px;
+    white-space: nowrap;
+}
+
+.admin-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.admin-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.82);
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.admin-nav-item svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+    flex: 0 0 auto;
+    display: block;
+}
+
+.admin-nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+/* Clicked / current button gets the blue box,
+   every other button stays plain with no background. */
+.admin-nav-item.is-active,
+.admin-nav-item.is-active:hover {
+    background-color: var(--admin-blue);
+    color: #FFFFFF;
+}
+
+.admin-nav-item:active {
+    background-color: rgba(255, 255, 255, 0.14);
+}
+
+.admin-nav-item.is-active:active {
+    background-color: var(--admin-blue-dark);
+}
+
+/* Text part of the server LinkButton that sits inside a nav item */
+.admin-nav-label {
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.admin-nav-label:hover,
+.admin-nav-label:focus {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.admin-nav-logout {
+    margin-top: 10px;
+}
+
+/* ---------- Top bar ---------- */
+.admin-topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    box-sizing: border-box;
+    min-height: 72px;
+    padding: 12px 36px;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid var(--admin-line);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.admin-topbar-title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--admin-ink);
+}
+
+.admin-topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.admin-topbar-welcome {
+    color: var(--admin-muted);
+    font-size: 14.5px;
+}
+
+.admin-topbar-avatar {
+    width: 40px;
+    height: 40px;
+}
+
+.admin-topbar-avatar svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* ---------- Stat cards ---------- */
+.admin-stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+    margin-bottom: 28px;
+}
+
+.admin-stat-card {
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    border: 1px solid var(--admin-line);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+}
+
+.admin-stat-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    background-color: #EFF6FF;
+    color: var(--admin-blue);
+}
+
+.admin-stat-icon svg {
+    width: 26px;
+    height: 26px;
+    fill: currentColor;
+    display: block;
+}
+
+.admin-stat-icon-blue {
+    background-color: #EFF6FF;
+    color: #2563EB;
+}
+
+.admin-stat-icon-green {
+    background-color: #ECFDF5;
+    color: #16A34A;
+}
+
+.admin-stat-icon-red {
+    background-color: #FEF2F2;
+    color: #DC2626;
+}
+
+.admin-stat-icon-purple {
+    background-color: #F5F3FF;
+    color: #7C3AED;
+}
+
+.admin-stat-card:hover .admin-stat-icon {
+    background-color: var(--admin-blue);
+    color: #FFFFFF;
+}
+
+.admin-stat-card:hover .admin-stat-icon svg {
+    fill: currentColor;
+}
+
+.admin-stat-card:hover .admin-stat-icon-green {
+    background-color: #16A34A;
+    color: #FFFFFF;
+}
+
+.admin-stat-card:hover .admin-stat-icon-red {
+    background-color: #DC2626;
+    color: #FFFFFF;
+}
+
+.admin-stat-card:hover .admin-stat-icon-purple {
+    background-color: #7C3AED;
+    color: #FFFFFF;
+}
+
+.admin-stat-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.admin-stat-label {
+    color: var(--admin-muted);
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.admin-stat-value {
+    color: #0F172A;
+    font-size: 27px;
+    font-weight: 800;
+    line-height: 1.15;
+    white-space: nowrap;
+}
+
+/* ---------- Panel (User List) ---------- */
+.admin-panel {
+    background-color: #FFFFFF;
+    border: 1px solid var(--admin-line);
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+    overflow: hidden;
+}
+
+.admin-panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 22px 24px;
+}
+
+.admin-panel-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--admin-ink);
+}
+
+.admin-panel-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.admin-btn-outline,
+.admin-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.admin-btn-outline {
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    color: #334155;
+}
+
+.admin-btn-outline:hover {
+    background-color: #F8FAFC;
+}
+
+.admin-btn-primary {
+    background-color: var(--admin-blue);
+    border: 1px solid var(--admin-blue);
+    color: #FFFFFF;
+    padding: 10px 18px;
+}
+
+.admin-btn-primary:hover {
+    background-color: var(--admin-blue-dark);
+    border-color: var(--admin-blue-dark);
+}
+
+/* Blue primary button used as a link (Edit Profile on the profile page) */
+a.admin-btn-primary {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+a.admin-btn-primary:hover,
+a.admin-btn-primary:focus {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+/* ---------- User list table ---------- */
+.admin-table-wrap {
+    overflow-x: auto;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14.5px;
+}
+
+.admin-table th {
+    background-color: #F8FAFC;
+    color: var(--admin-muted);
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 13px 16px;
+    border-bottom: 1px solid var(--admin-line);
+    white-space: normal;
+    vertical-align: middle;
+}
+
+.admin-table td {
+    padding: 15px 16px;
+    border-bottom: 1px solid #F1F5F9;
+    color: #334155;
+    vertical-align: middle;
+}
+
+.admin-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.admin-table tr:hover {
+    background-color: #FAFBFD;
+}
+
+.admin-user-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.admin-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    flex: 0 0 auto;
+}
+
+.admin-avatar-blue {
+    background-color: #DBEAFE;
+    color: #1D4ED8;
+}
+
+.admin-avatar-green {
+    background-color: #D1FAE5;
+    color: #059669;
+}
+
+.admin-avatar-purple {
+    background-color: #EDE9FE;
+    color: #6D28D9;
+}
+
+.admin-user-name {
+    font-weight: 600;
+    color: var(--admin-ink);
+}
+
+.admin-user-id {
+    color: var(--admin-blue);
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.admin-user-id:hover,
+.admin-user-id:focus {
+    text-decoration: underline;
+}
+
+.admin-amount {
+    font-weight: 700;
+    color: var(--admin-ink);
+    white-space: nowrap;
+}
+
+.admin-badge-active,
+.admin-badge-inactive {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.admin-badge-active {
+    background-color: #DCFCE7;
+    color: #16A34A;
+}
+
+.admin-badge-inactive {
+    background-color: #F1F5F9;
+    color: var(--admin-muted);
+}
+
+.admin-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.admin-icon-btn {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    border-radius: 8px;
+    background-color: transparent;
+    color: #94A3B8;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.admin-icon-btn svg {
+    width: 17px;
+    height: 17px;
+    fill: currentColor;
+    display: block;
+}
+
+.admin-icon-btn:hover {
+    background-color: #EFF6FF;
+    color: var(--admin-blue);
+}
+
+.admin-icon-danger:hover {
+    background-color: #FEF2F2;
+    color: #DC2626;
+}
+
+/* ---------- Table footer + pagination ---------- */
+.admin-table-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 16px 24px;
+    color: var(--admin-muted);
+    font-size: 14px;
+}
+
+.admin-pagination {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.admin-page-btn {
+    min-width: 40px;
+    box-sizing: border-box;
+    padding: 8px 14px;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    color: #334155;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.admin-page-btn:hover {
+    background-color: #F8FAFC;
+}
+
+.admin-page-btn.is-current {
+    background-color: var(--admin-blue);
+    border-color: var(--admin-blue);
+    color: #FFFFFF;
+}
+
+.admin-page-btn.is-current:hover {
+    background-color: var(--admin-blue-dark);
+}
+
+/* ---------- Clicked (pressed) colour feedback for every admin button ---------- */
+.btn-admin:active {
+    background-color: #8E1243 !important;
+    border-color: #8E1243 !important;
+    color: #FFFFFF !important;
+}
+
+.admin-btn-primary:active {
+    background-color: #1E40AF;
+    border-color: #1E40AF;
+}
+
+.admin-btn-outline:active {
+    background-color: #EEF2F7;
+}
+
+.admin-page-btn:active {
+    background-color: #EEF2F7;
+}
+
+.admin-page-btn.is-current:active {
+    background-color: #1E40AF;
+    border-color: #1E40AF;
+    color: #FFFFFF;
+}
+
+/* ---------- Dashboard shell responsive ---------- */
+@media screen and (max-width: 1200px) {
+    .admin-stat-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .admin-layout-sidebar {
+        margin-left: 0;
+    }
+
+    .admin-sidebar {
+        position: static;
+        width: auto;
+        bottom: auto;
+        flex-direction: column;
+    }
+
+    .admin-layout-sidebar .admin-main {
+        padding: 22px 20px 32px;
+    }
+
+    .admin-topbar {
+        padding: 12px 20px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .admin-stat-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .admin-topbar-welcome {
+        display: none;
+    }
+}
+
+/* ==========================================================================
+   ACTIVE USERS PAGE
+   Search box, back button and the linked "Active Users" dashboard card.
+   ========================================================================== */
+
+/* Search box in the panel head */
+.admin-search {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.admin-search svg {
+    position: absolute;
+    left: 13px;
+    width: 16px;
+    height: 16px;
+    color: #94A3B8;
+    pointer-events: none;
+}
+
+.admin-search-input {
+    box-sizing: border-box;
+    width: 250px;
+    padding: 10px 14px 10px 38px;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    color: #334155;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.admin-search-input::placeholder {
+    color: #94A3B8;
+}
+
+.admin-search-input:focus {
+    outline: none;
+    border-color: var(--admin-blue);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* Registration date column */
+.admin-reg-date {
+    white-space: nowrap;
+    color: #64748B;
+}
+
+/* "back" button under the panel */
+.admin-back-row {
+    margin-top: 24px;
+}
+
+.admin-btn-back {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 11px 26px;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    color: #334155;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.admin-btn-back:hover,
+.admin-btn-back:focus {
+    background-color: #F8FAFC;
+    text-decoration: none;
+    color: #334155;
+}
+
+.admin-btn-back:active {
+    background-color: #EEF2F7;
+}
+
+/* The "Active Users" dashboard card opens the Active Users page */
+a.admin-stat-card {
+    text-decoration: none;
+    color: inherit;
+}
+
+a.admin-stat-card:hover,
+a.admin-stat-card:focus {
+    border-color: var(--admin-blue);
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.14);
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ==========================================================================
+   ADMIN USER PROFILE PAGE
+   "User Information" card opened from the view (eye) button of the
+   All / Active / Inactive / New Users pages.
+   ========================================================================== */
+
+/* View button is an <a> that opens the profile page */
+a.admin-icon-btn {
+    text-decoration: none;
+}
+
+/* Bigger card: taller and wider than the other admin panels.
+   The negative margins pull it over the 36px page padding so it
+   spans the full content width. */
+.admin-profile-card {
+    box-sizing: border-box;
+    margin-left: -36px;
+    margin-right: -36px;
+    padding: 34px 40px 40px;
+    min-height: 640px;
+}
+
+.admin-profile-head {
+    padding-bottom: 24px;
+    border-bottom: 1px solid #E2E8F0;
+    margin-bottom: 30px;
+}
+
+.admin-profile-title {
+    margin: 0 0 6px;
+    font-size: 17px;
+    font-weight: 700;
+    color: #1E3A8A;
+}
+
+.admin-profile-sub {
+    margin: 0;
+    font-size: 14px;
+    color: #64748B;
+}
+
+/* Photo row */
+.admin-profile-photo-row {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    margin-bottom: 36px;
+}
+
+.admin-profile-photo-wrap {
+    position: relative;
+    flex: 0 0 auto;
+    width: 110px;
+    height: 110px;
+}
+
+.admin-profile-photo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 110px;
+    height: 110px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #2563EB, #4F46E5);
+    color: #FFFFFF;
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.admin-profile-cam {
+    position: absolute;
+    right: -7px;
+    bottom: -7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    background-color: var(--admin-blue);
+    color: #FFFFFF;
+}
+
+.admin-profile-cam svg {
+    width: 15px;
+    height: 15px;
+    fill: currentColor;
+    display: block;
+}
+
+.admin-profile-photo-meta {
+    display: block;
+}
+
+.admin-profile-photo-title {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #1E3A8A;
+}
+
+.admin-profile-photo-hint {
+    display: block;
+    margin-bottom: 14px;
+    font-size: 13px;
+    color: #64748B;
+}
+
+.admin-profile-photo-actions {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.admin-profile-upload {
+    padding: 9px 16px;
+    border: none;
+    border-radius: 7px;
+    background-color: #DBEAFE;
+    color: #1D4ED8;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.admin-profile-upload:hover {
+    background-color: #BFDBFE;
+}
+
+.admin-profile-upload:active {
+    background-color: #A5C8FE;
+}
+
+.admin-profile-remove {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    color: #EF4444;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.admin-profile-remove:hover {
+    text-decoration: underline;
+}
+
+/* Field grid: two columns, address full width */
+.admin-profile-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 26px 32px;
+}
+
+.admin-profile-field-full {
+    grid-column: 1 / -1;
+}
+
+.admin-profile-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #64748B;
+}
+
+.admin-profile-input {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid #E2E8F0;
+    border-radius: 9px;
+    background-color: #F8FAFC;
+    color: #1E3A8A;
+    font-family: inherit;
+    font-size: 14.5px;
+    line-height: 1.4;
+}
+
+.admin-profile-status {
+    color: #1D4ED8;
+    font-weight: 600;
+}
+
+textarea.admin-profile-input {
+    min-height: 96px;
+    resize: vertical;
+}
+
+.admin-profile-input:focus {
+    outline: none;
+    border-color: var(--admin-blue);
+    background-color: #FFFFFF;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* Back button, bottom right of the card */
+.admin-profile-foot {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 40px;
+}
+
+/* "Update User" button (Edit User page) */
+.admin-btn-update {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 12px 26px;
+    border: 1px solid var(--admin-blue);
+    border-radius: 8px;
+    background-color: var(--admin-blue);
+    color: #FFFFFF;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.admin-btn-update:hover,
+.admin-btn-update:focus {
+    background-color: #1D4ED8;
+    border-color: #1D4ED8;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.admin-btn-update:active {
+    background-color: #1E40AF;
+    border-color: #1E40AF;
+}
+
+/* On narrow screens the page padding is only 20px */
+@media screen and (max-width: 960px) {
+    .admin-profile-card {
+        margin-left: -20px;
+        margin-right: -20px;
+        padding: 26px 24px 30px;
+        min-height: 0;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .admin-profile-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .admin-profile-photo-row {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
